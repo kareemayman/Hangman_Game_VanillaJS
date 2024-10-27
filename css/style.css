@@ -30,6 +30,12 @@ body {
     translate: -50% -50%;
 }
 
+.game .flex {
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
+}
+
 .figure {
     fill: none;
     stroke: white;
@@ -39,6 +45,8 @@ body {
 
 .game .letter-placeholders {
     margin-top: 30px;
+    margin-inline: auto;
+    width: fit-content;
 }
 
 .game .letter-placeholders .letter {
