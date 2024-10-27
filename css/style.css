@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    color: white;
+    background-color: rgb(54, 64, 87);
+}
+
+.info {
+    text-align: center;
+}
+
+.info p {
+    text-transform: capitalize;
+}
+
+.game {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
