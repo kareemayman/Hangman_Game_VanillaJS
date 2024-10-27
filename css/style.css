@@ -36,3 +36,16 @@ body {
     stroke-width: 4px;
     stroke-linecap: round;
 }
+
+.game .letter-placeholders {
+    margin-top: 30px;
+}
+
+.game .letter-placeholders .letter {
+    display: inline-block;
+    background-color: rgb(183, 193, 214);
+    width: 25px;
+    height: 3px;
+    position: relative;
+    margin-inline: 2px;
+}
