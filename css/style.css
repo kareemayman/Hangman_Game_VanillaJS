@@ -32,8 +32,9 @@ body {
 
 .game .flex {
     display: flex;
-    gap: 80px;
+    gap: 80px; /* Minimum Horizontal Space */
     align-items: flex-start;
+    justify-content: space-between;
 }
 
 .figure {
@@ -52,8 +53,27 @@ body {
 .game .letter-placeholders .letter {
     display: inline-block;
     background-color: rgb(183, 193, 214);
-    width: 25px;
+    width: 30px;
     height: 3px;
     position: relative;
-    margin-inline: 2px;
+    margin-inline: 6px;
+}
+
+.game .letter-placeholders .letter::after {
+    content: attr(data-letter);
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    translate: -50%;
+    color: white;
+    font-size: 1.7rem;
+    font-weight: bold;
+    background-color: rgb(84, 103, 114);
+    padding: 0 5px 5px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    text-transform: uppercase;
 }
