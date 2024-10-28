@@ -1,7 +1,5 @@
-# Hangman_Game_VanillaJS
+# Hangman Game
 Hangman Game Built From Scratch With HTML, CSS, SVG, &amp; Vanilla JavaScript
-
-## Hangman Game
 
 Select a letter to figure out a hidden word in a set amount of chances
 
@@ -14,4 +12,6 @@ Select a letter to figure out a hidden word in a set amount of chances
 - Show notification when select a letter twice
 - Show popup on win or lose
 - Play again button to reset game
-- Animation
+- Animations
+
+Demo: https://kareemayman.github.io/Hangman_Game_VanillaJS/
