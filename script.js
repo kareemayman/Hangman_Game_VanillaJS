@@ -1,5 +1,7 @@
 const letters = document.querySelector('.letter-placeholders')
 const pressedBeforeMsg = document.querySelector('.pressed-before')
+const wrongLetters = document.querySelector('.wrong-letters p')
+const youLostMsg = document.querySelector('.you-lost')
 
 fetch("./words.json")
   .then((response) => response.json())
@@ -47,6 +49,7 @@ document.addEventListener("keyup", (e) => {
       // Check If The Letter Was Wrong
       if (found === false) {
         wrongAnswers.push(e.key)
+        addWrongLetter(e.key)
       }
 
       // Add Letter To Tried Letters List
@@ -61,4 +64,43 @@ function pressedBefore() {
   setTimeout(() => {
     pressedBeforeMsg.classList.remove('pressed-before-visible')
   }, 2000);
+}
+
+// Function When User Presses A Wrong Letter
+function addWrongLetter(letter) {
+  let wrongLettersTextNode = wrongAnswers.length === 1 ? document.createTextNode(`${letter}`) : document.createTextNode(`, ${letter}`)
+  wrongLetters.appendChild(wrongLettersTextNode)
+
+  switch(wrongAnswers.length) {
+    case 1:
+      document.querySelector('svg circle').classList.remove('body-part-hidden')
+      break
+    
+    case 2:
+      document.querySelector('svg circle + line').classList.remove('body-part-hidden')
+      break
+    
+    case 3:
+      document.querySelector('svg circle + line + line').classList.remove('body-part-hidden')
+      break
+    
+    case 4:
+      document.querySelector('svg line:nth-last-of-type(3)').classList.remove('body-part-hidden')
+      break
+    
+    case 5:
+      document.querySelector('svg line:nth-last-of-type(2)').classList.remove('body-part-hidden')
+      break
+    
+    case 6:
+      document.querySelector('svg line:last-of-type').classList.remove('body-part-hidden')    
+      playAgainMsg()
+  }
+}
+
+// Function To Show Play Again Message
+function playAgainMsg() {
+
+  document.body.classList.add('overlay')
+  youLostMsg.classList.add('show-play-again')
 }
