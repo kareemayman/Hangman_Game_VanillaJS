@@ -213,4 +213,5 @@ svg line, circle {
 
 .show-play-again {
     opacity: 1;
+    z-index: 1000;
 }
