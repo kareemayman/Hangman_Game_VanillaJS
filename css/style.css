@@ -174,7 +174,7 @@ svg line, circle {
     }
 }
 
-.you-lost {
+.you-lost, .you-won {
     background-color: rgb(48, 117, 173);
     position: absolute;
     top: 50%;
@@ -188,12 +188,12 @@ svg line, circle {
     transition: 0.3s;
 }
 
-.you-lost h2 {
+.you-lost h2, .you-won h2 {
     margin: 20px auto;
     width: fit-content;
 }
 
-.you-lost button {
+.you-lost button, .you-won button {
     display: block;
     margin-top: 30px;
     margin-inline: auto;
@@ -207,7 +207,7 @@ svg line, circle {
     transition: 0.1s;
 }
 
-.you-lost button:hover {
+.you-lost button:hover, .you-won button:hover {
     background-color: rgb(233, 233, 233);
 }
 

@@ -2,6 +2,7 @@ const letters = document.querySelector('.letter-placeholders')
 const pressedBeforeMsg = document.querySelector('.pressed-before')
 const wrongLetters = document.querySelector('.wrong-letters p')
 const youLostMsg = document.querySelector('.you-lost')
+const youWonMsg = document.querySelector('.you-won')
 
 fetch("./words.json")
   .then((response) => response.json())
@@ -53,6 +54,18 @@ document.addEventListener("keyup", (e) => {
         if (found === false) {
           wrongAnswers.push(e.key)
           addWrongLetter(e.key)
+        } else {
+          // If Letter Was Correct Check If Player Won
+          let userWon = true
+          letterSpans.forEach((span) => {
+            if (!span.classList.contains('letter-visible')) {
+              userWon = false
+            }
+          })
+
+          if (userWon) {
+            showWinningMsg()
+          }
         }
 
         // Add Letter To Tried Letters List
@@ -63,7 +76,7 @@ document.addEventListener("keyup", (e) => {
 })
 
 // Event For Pressing Play Again
-youLostMsg.addEventListener('click', e => {
+document.body.addEventListener('click', e => {
   if (e.target.matches('button')) {
     // Refresh The Page & Run Script Again
     location.reload(true);
@@ -115,4 +128,11 @@ function playAgainMsg() {
 
   document.body.classList.add('overlay')
   youLostMsg.classList.add('show-play-again')
+}
+
+// Function To Show Winning Message
+function showWinningMsg() {
+
+  document.body.classList.add('overlay')
+  youWonMsg.classList.add('show-play-again')
 }
