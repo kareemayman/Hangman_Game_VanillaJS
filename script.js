@@ -24,37 +24,49 @@ let wrongAnswers = []
 // Event For Pressing a Key
 document.addEventListener("keyup", (e) => {
 
-  // Check If User Pressed a Letter
-  let regExp = /^[a-z]$/img
-  if (regExp.test(e.key)) {
+  // Make Sure Play Again Message Isn't Shown
+  if (!document.body.classList.contains('overlay')) {
 
-    // Check If Letter Was Pressed Before To Print Message
-    if (lettersTried.includes(e.key)) {      
-      pressedBefore()
-    } else {
+    // Check If User Pressed a Letter
+    let regExp = /^[a-z]$/img
+    if (regExp.test(e.key)) {
 
-      // Get All Letter Placeholder Spans
-      const letterSpans = Array.from(document.querySelectorAll(".letter-placeholders span"))
+      // Check If Letter Was Pressed Before To Print Message
+      if (lettersTried.includes(e.key)) {      
+        pressedBefore()
+      } else {
 
-      let found = false
+        // Get All Letter Placeholder Spans
+        const letterSpans = Array.from(document.querySelectorAll(".letter-placeholders span"))
 
-      // Check If The Letter Is Found In The Word & Make It Visible
-      letterSpans.forEach((span) => {
-        if (span.dataset.letter === e.key) {
-          span.classList.add("letter-visible")
-          found = true
+        let found = false
+
+        // Check If The Letter Is Found In The Word & Make It Visible
+        letterSpans.forEach((span) => {
+          if (span.dataset.letter === e.key) {
+            span.classList.add("letter-visible")
+            found = true
+          }
+        })
+
+        // Check If The Letter Was Wrong
+        if (found === false) {
+          wrongAnswers.push(e.key)
+          addWrongLetter(e.key)
         }
-      })
 
-      // Check If The Letter Was Wrong
-      if (found === false) {
-        wrongAnswers.push(e.key)
-        addWrongLetter(e.key)
+        // Add Letter To Tried Letters List
+        lettersTried.push(e.key)
       }
-
-      // Add Letter To Tried Letters List
-      lettersTried.push(e.key)
     }
+  }
+})
+
+// Event For Pressing Play Again
+youLostMsg.addEventListener('click', e => {
+  if (e.target.matches('button')) {
+    // Refresh The Page & Run Script Again
+    location.reload(true);
   }
 })
 
