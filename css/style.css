@@ -211,6 +211,10 @@ svg line, circle {
     background-color: rgb(233, 233, 233);
 }
 
+.you-lost button:active, .you-won button:active {
+    scale: 0.95;
+}
+
 .show-play-again {
     opacity: 1;
     z-index: 1000;
